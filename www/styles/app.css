@@ -1,0 +1,216 @@
+@font-face {
+  font-family: Kaushan Script;
+  src: url("fonts/KaushanScript-Regular.ttf"); /* TTF file for CSS3 browsers */
+}
+
+/* base */
+* {margin: 0; padding: 0;}
+
+ul {
+  list-style-type: none;
+}
+
+.rightArrow:before {
+   font-family: FontAwesome;
+   content: "\f105";
+   float: right;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+input.borderless, textarea:focus.borderless, input:focus.borderless{
+    outline: none;
+	border : none;
+}
+
+/* table */
+.table {
+  display: table;
+}
+.table-row {
+  display: table-row;
+}
+.table-column {
+  display: table-cell;
+}
+
+.row-content {
+  padding: 5px;  
+  border-bottom: thin solid #ddd; 
+}
+
+.row-content  i {
+  width: 20px;
+}
+
+.cell-content {
+  display: table-cell;
+  padding: 5px;  
+}
+
+/* inputs */
+.full-input {
+  width: 100%; 
+  margin-top: 4px;
+}
+
+.list-input {
+  margin-top: 6px;
+  line-height: 0px;
+}
+
+/* list */
+.list-cell-content {  
+  display: table-cell;
+  padding: 5px;
+}
+
+.list-item {	
+  border-bottom: thin solid #ddd; 
+}
+
+.content {
+  padding: 5px;
+}
+
+.item {
+  padding: 10px;
+  width: 100%;
+}
+
+.item  i {
+  padding: 5px;
+}
+
+.list__item  i {
+  width: 30px;
+  font-size: 1.33333333em;
+}
+
+.normal {
+  width: 203px;
+}
+
+.short {
+  line-height: 25px;
+  min-height: 25px;
+}
+
+.narrow {
+  width: 100px;
+}
+
+.wide {
+}
+
+.editor {
+  min-height: 31px;
+}
+
+.editor-label {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 100px;  
+}
+
+.editor-field {
+}
+
+.field-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  line-height:31px;
+}
+
+/* maps */
+/*.angular-google-map-container { height: auto; }*/
+
+/* course */
+.course_item {
+  display: table;
+}
+
+.course_item_nextLesson {
+  width: 20px;
+  font: small arial;
+  color: grey;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 15px 0 5px; /* top right bottom left*/
+}
+
+.course_item_header{
+  font: small arial;
+  color: grey;
+}
+
+.course_item_institution{
+
+}
+
+.course_item_details{
+
+}
+
+.course_item_name{
+  font-weight: bold;  
+}
+
+.course_item_desc{
+  margin-top: 2px;
+  font: small arial;
+}
+
+/* lesson */
+.lesson-item {
+  padding: 2px 0 2px 0;
+}
+
+.lesson-item-date, .lesson-item-duration, .lesson-item-cost {
+  font: small arial;
+  color: grey;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0 5px 0 5px; /* top right bottom left*/
+}
+
+.lesson-item-date{
+  width: 20px;
+}
+
+.lesson-item-duration{
+  width: 40px;
+}
+
+.lesson-item-cost{
+  width: 40px;
+}
+
+.lesson-item-name {
+  font-weight: bold;
+}
+
+.lesson-item-desc {
+  font: small 'Lucida Grande';	
+}
+
+
+.lesson_name {
+  font: large arial;
+}
+

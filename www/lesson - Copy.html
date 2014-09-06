@@ -1,0 +1,53 @@
+<ons-navigator var="myNavigator">
+<ons-page ng-controller="LessonCtrl">
+	<ons-scroller>
+		<div class="lesson_name">{{lesson.Name}}</div>
+		<div class="lesson mytable">			
+			<div class="lesson_date item">
+				<i class="fa fa-calendar fa-lg cell" style="color: #666"></i>				
+				<div class="cell content">
+					{{getLessonDate()}}
+				</div>
+			</div>
+			<div class="lesson_deadline item">
+				<i class="fa fa-calendar-o fa-lg cell" style="color: #666"></i>
+				<div class="cell content">
+					<div>
+						<button ng-click="register()" ng-disabled="lessonFull()">{{register_text}}</button>
+						deadline: {{lesson.Deadline | date: 'short' }}
+					</div>
+					<div>
+						{{lesson.AvailableSpots}} / {{lesson.MaxStudents}}
+					</div>
+				</div>
+			</div>
+			<div class="lesson_institution item">
+				<i class="fa fa-phone fa-lg cell" style="color: #666"></i>
+				<div class="cell content">
+					<div>{{course.Institution.Name}}</div>
+					<div>{{course.Institution.Contact}}</div>
+				</div>
+			</div>
+			<div class="lesson_location item" ng-click="showMap()">
+				<i class="fa fa-map-marker fa-lg cell" style="color: #666"></i>
+				<div class="cell content">
+					<div>{{lesson.Location.Name}}</div>
+					<div>{{lesson.Location.Address}}</div>
+				</div>
+				<i class="fa fa-angle-right fa-lg cell" style="color: #666"></i>
+			</div>
+			<div class="lesson_desc item">
+				<i class="fa fa-file-text-o fa-lg cell" style="color: #666"></i>
+				<div class="cell content">
+					{{lesson.Description}}
+				</div>
+			</div>
+			<div class="lesson_comments item">
+				<i class="fa fa-comment fa-lg cell" style="color: #666"></i>
+				<div class="cell content">Comments</div>
+				<i class="fa fa-angle-right fa-lg cell" style="color: #666"></i>
+			</div>
+		</div>
+	</ons-scroller>
+</ons-page>
+</ons-navigator>

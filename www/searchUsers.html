@@ -1,0 +1,23 @@
+
+<ons-page ng-controller="SearchUsersCtrl">
+	<ons-toolbar>
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+		<div class="center">Search</div>		
+	</ons-toolbar>
+	<div>
+		<input type="search" placeholder="Search" class="search-input borderless" ng-model="searchText"  ng-model-options="{debounce: 1000}" />
+	</div>
+	<ons-list>
+        <ons-list-item class="list-item" ng-repeat="user in users">
+			<div ng-click="selectUser($index)">
+				<div class="swipe-item-top">
+					<div>
+						{{user.Name}}
+					</div>
+				</div>				
+			</div>			
+		</ons-list-item>
+    </ons-list>	
+</ons-page>

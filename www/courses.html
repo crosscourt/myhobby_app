@@ -1,0 +1,34 @@
+<ons-navigator var="myNavigator">
+	<ons-page ng-controller="CourseCtrl">
+		<ons-toolbar>		
+		  <div class="center">Courses</div>
+			<div class="right">
+				<ons-toolbar-button ng-click="myNavigator.pushPage('lessonEntry.html')">
+				  <ons-icon icon="plus">
+				</ons-toolbar-button>
+			</div>
+		</ons-toolbar>
+		<ons-scroller>
+			<ons-list>
+				<ons-list-item ng-repeat="course in courses">
+					<slide-item on-tap="showLessons($index)">
+						<div class="course_item">
+							<div class="course_item_nextLesson">
+								{{course.NextLesson}}
+							</div>
+							<div>
+								<div class="course_item_header">
+									<div class="course_item_institution">{{course.Institution.Name}}</div>
+								</div>
+								<div class="course_item_details">					
+									<div class="course_item_name">{{course.Name}}</div>
+									<div class="course_item_desc">{{course.Description}}</div>
+								</div>
+							</div>
+						</div>
+					</slide-item>
+				</ons-list-item>
+			</ons-list>
+		</ons-scroller>
+	</ons-page>
+</ons-navigator>

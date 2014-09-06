@@ -1,0 +1,43 @@
+<ons-navigator var="myNavigator">
+<ons-page ng-controller="LessonsCtrl">
+	<ons-toolbar>		
+		<div class="center">Classes</div>
+		<div class="right">
+			<ons-toolbar-button ng-click="addClass()">
+			  <ons-icon icon="plus">
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+	<ul slide-item-group>
+        <li class="list-item" ng-repeat="lesson in lessons">
+			<slide-item on-tap="showLesson($index)">				
+				<div class="swipe-item-top lesson-item">
+					<div class="table">
+						<div class="lesson-item-date table-column">
+							{{lesson.Date}}
+						</div>
+						<div class="lesson-item-duration table-column">
+							{{lesson.Duration}}
+						</div>
+						<div class="lesson-item-cost table-column">
+							{{lesson.Cost}}
+						</div>
+						<div class="lesson-details table-column">					
+							<div class="lesson-item-name">{{lesson.Name}}</div>
+							<div class="lesson-item-desc">{{lesson.Description}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="swipe-item-bottom">
+					<div class="swipe-item-menu" ng-click="moreActions({{activity.Id}})">
+						More
+					</div>
+					<div class="swipe-item-menu" style="background-color: red; color: white">
+						Delete
+					</div>
+				</div>
+			</slide-item>
+		</li>
+    </ul>	
+</ons-page>
+</ons-navigator>

@@ -1,0 +1,33 @@
+
+<ons-page ng-controller="BusinessUsersCtrl">
+	<ons-toolbar>
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+		<div class="center">{{type}}</div>
+		<div class="right">
+			<ons-toolbar-button ng-click="addUser()">
+			  <ons-icon icon="plus">
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>	
+	<ons-list slide-item-group>
+        <ons-list-item class="list-item" ng-repeat="user in users">
+			<slide-item on-tap="showDetails($index)">
+				<div class="swipe-item-top">
+					<div>
+						{{user.Name}}
+					</div>
+				</div>
+				<div class="swipe-item-bottom">
+					<div class="swipe-item-menu" ng-click="moreActions({{user.Id}})">
+						More
+					</div>
+					<div class="swipe-item-menu" ng-show="isAdmin" style="background-color: red; color: white">
+						Delete
+					</div>
+				</div>
+			</slide-item>
+		</ons-list-item>
+    </ons-list>	
+</ons-page>

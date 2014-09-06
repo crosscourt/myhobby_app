@@ -1,0 +1,53 @@
+<ons-navigator var="myNavigator">
+<ons-page ng-controller="LessonCtrl">
+	<ons-toolbar>		
+		<div class="center">Class</div>		
+	</ons-toolbar>
+	<ons-scroller>
+		<div class="table">
+			<div class="list__item short">
+				<div class="content lesson_name">{{lesson.Name}}</div>						
+			</div>
+			<div class="list__item short">
+				<i class="fa fa-calendar list-cell-content" style="color: #666"></i>				
+				<div class="list-cell-content">{{getLessonDate()}}</div>
+			</div>
+			<div class="list__item short">
+				<i class="fa fa-calendar-o list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">deadline: {{lesson.Deadline | date: 'short' }}</div>
+			</div>
+			<div class="list__item short">
+				<i class="fa fa-user list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">
+					<button ng-click="register()" ng-disabled="lessonFull()">{{register_text}}</button>
+					{{lesson.AvailableSpots}} / {{lesson.MaxStudents}}
+				</div>
+			</div>
+			<div class="list__item short">
+				<i class="fa fa-phone list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">
+					<div>{{lesson.Institution.Name}}</div>
+					<div>{{lesson.Institution.Contact}}</div>
+				</div>
+			</div>
+			<div class="list__item list__item--chevron short" ng-click="showMap()">
+				<i class="fa fa-map-marker list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">
+					<div>{{lesson.Location.Name}}</div>
+					<div>{{lesson.Location.Address}}</div>
+				</div>
+			</div>
+			<div class="list__item short">
+				<i class="fa fa-file-text-o list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">
+					{{lesson.Description}}
+				</div>
+			</div>
+			<div class="list__item list__item--chevron short">
+				<i class="fa fa-comment list-cell-content" style="color: #666"></i>
+				<div class="list-cell-content">Comments</div>				
+			</div>
+		</div>
+	</ons-scroller>
+</ons-page>
+</ons-navigator>

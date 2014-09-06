@@ -1,0 +1,44 @@
+<ons-navigator var="myNavigator">
+<ons-page ng-controller="BusinessesCtrl">
+	<ons-toolbar>		
+		<div class="center">Businesses</div>
+		<div class="right">
+			<ons-toolbar-button ng-click="addBusiness()">
+			  <ons-icon icon="plus">
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+	<ul slide-item-group>
+        <li class="list-item" ng-repeat="business in businesses">
+			<slide-item on-tap="showDetails($index)">				
+				<div class="swipe-item-top business-item">
+					<div class="table">
+						<div class="business-item-header">
+							<div class="business-item-name">
+								{{business.Name}}
+							</div>
+							<div class="business-item-category">
+								{{business.Category}}
+							</div>
+							<div class="business-item-suburb">
+								{{business.Suburb}}
+							</div>
+						</div>
+						<div class="business-item-details">							
+							<div class="business-item-desc">{{business.ShortDescription}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="swipe-item-bottom">
+					<div class="swipe-item-menu" ng-click="moreActions({{business.Id}})">
+						More
+					</div>
+					<div class="swipe-item-menu" ng-show="isAdmin" style="background-color: red; color: white">
+						Delete
+					</div>
+				</div>
+			</slide-item>
+		</li>
+    </ul>	
+</ons-page>
+</ons-navigator>

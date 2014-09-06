@@ -1,0 +1,45 @@
+<ons-page style="background-color: white">
+
+	<ul class="topcoat-list" ng-controller="MenuCtrl">
+
+		<ons-list-item
+			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
+			ng-click="ons.slidingMenu.toggleMenu(); ons.slidingMenu.setAbovePage('lessons.html')">
+			<i class="fa fa-briefcase fa-lg" style="color: #666"></i>
+			&nbsp; Browse
+		</ons-list-item>
+	
+		<ons-list-item
+			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
+			ng-click="ons.slidingMenu.toggleMenu(); ons.slidingMenu.setAbovePage('search.html')">
+			<!--ng-show="isLoggedIn">-->
+			<i class="fa fa-search fa-lg" style="color: #666"></i>
+			&nbsp; Search
+		</ons-list-item>
+	
+		<ons-list-item
+			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
+			ng-click="ons.slidingMenu.toggleMenu(); ons.slidingMenu.setAbovePage('myClasses.html')">
+			<i class="fa fa-user fa-lg" style="color: #666"></i>
+			&nbsp; My Classes
+		</ons-list-item>
+	
+		<ons-list-item
+			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
+			ng-click="ons.slidingMenu.toggleMenu(); 
+			ons.slidingMenu.setAbovePage('login.html')">
+			<i class="fa fa-home fa-lg" style="color: #666"></i>
+			&nbsp; {{loginMenu}}
+		</ons-list-item>
+
+		<ons-list-item 
+			class="topcoat-list__item--tappable topcoat-list__item__line-height"
+			ng-click="ons.slidingMenu.toggleMenu(); 
+			ons.slidingMenu.setAbovePage('businesses.html')">
+			<i class="fa fa-university fa-lg" style="color: #666"></i>
+			&nbsp; Schools / Shops
+		</ons-list-item>
+
+	</ul>
+
+</ons-page>

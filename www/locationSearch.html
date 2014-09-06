@@ -1,0 +1,21 @@
+<ons-page ng-controller="LocationSearchCtrl">
+	<ons-scroller>		
+		<div>
+			search 
+			<ons-search-input 
+				ng-model="searchText" 
+				placeholder="Where is the lesson?">
+			</ons-search-input>
+		</div>
+		<div>
+			Near: <a href="">{{nearLocation}}</a>
+		</div>
+		<div id="map"></div><!--marker for pos of photo or selected location-->
+		<ul ng-repeat="place in savedPlaces">
+			<li>{{place.Name}}</li>
+		</ul>
+		<ul ng-repeat="place in searchedPlaces">
+			<li>{{place.Name}}</li>
+		</ul>
+	</ons-scroller>
+</ons-page>

@@ -1,0 +1,51 @@
+<ons-navigator var="myNavigator" >
+<ons-page ng-controller="RegisterCtrl">
+	<ons-toolbar>
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+	  <div class="center">Register</div>	    
+	</ons-toolbar>
+	
+	<form name="form" ng-submit="save(form.$valid)" novalidate>
+	<ons-list>
+		<ons-list-item>
+			<ons-row>
+				<ons-col>					
+					<input class="text-input text-input--transparent" style="width:100%; margin-top:4px;"
+						ng-model="user.Name"
+						placeholder="name">
+					</input>					
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col>
+					<input class="text-input text-input--transparent" style="width:100%; margin-top:4px;"
+						ng-model="user.Email"
+						placeholder="email address">
+					</input>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col>
+					<input class="text-input text-input--transparent" style="width:100%; margin-top:4px;"
+						ng-model="user.Password"
+						placeholder="password">
+					</input>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+	</ons-list>
+	
+	<div class="center" style="padding: 8px">
+		<div>
+			<button class="button--cta" type="submit" ng-click="register()" ng-disabled="form.$invalid">Register</button>		
+		</div>
+	</div>
+	</form>
+</ons-page>
+</ons-navigator>

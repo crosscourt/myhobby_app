@@ -1,0 +1,41 @@
+<ons-navigator var="myNavigator">
+	<ons-page ng-controller="LoginCtrl">
+		<ons-toolbar>			
+		  <div class="center">Login</div>	    
+		</ons-toolbar>
+		
+		<form name="form" ng-submit="save(form.$valid)" novalidate>
+		<ons-list>
+			<ons-list-item>
+				<ons-row>
+					<ons-col>
+						<input class="text-input text-input--transparent" style="width:100%; margin-top:4px;"
+							ng-model="user.Email"
+							placeholder="email address">
+						</input>
+					</ons-col>
+				</ons-row>
+			</ons-list-item>
+			<ons-list-item>
+				<ons-row>
+					<ons-col>						
+						<input class="text-input text-input--transparent" style="width:100%; margin-top:4px;"
+							ng-model="user.Password"
+							placeholder="password">
+						</input>						
+					</ons-col>
+				</ons-row>
+			</ons-list-item>
+		</ons-list>
+		
+		<div class="center" style="padding: 8px">
+			<span>
+				<button class="button--cta" type="submit" ng-click="login()" ng-disabled="form.$invalid">Login</button>		
+			</span>
+			<span>
+				<button class="button--quiet" ng-click="myNavigator.pushPage('register.html')">Signup</button>		
+			</span>
+		</div>
+		</form>
+	</ons-page>
+</ons-navigator>

@@ -1,0 +1,120 @@
+<ons-page ng-controller="LessonEntryCtrl">
+	<ons-toolbar>
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+	  <div class="center">Journal Entry</div>
+	    <div class="right">
+			<ons-toolbar-button ng-click="save()">
+			  <ons-icon icon="save">
+			</ons-toolbar-button>
+		</div>
+	</ons-toolbar>
+	
+	<form name="form" ng-submit="save(form.$valid)" novalidate>
+	<ons-list>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">Name</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<input class="text-input"
+							ng-model="lesson.Name"
+							placeholder="Name">
+						</input>
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">Start</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<span ng-click="showPicker()">{{lesson.StartTime}}</span>							
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">End</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<span ng-click="showPicker()">{{lesson.EndTime}}</span>							
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">Deadline</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<span ng-click="showPicker()">{{lesson.Deadline}}</span>							
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">Class Size</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<input class="text-input"
+							ng-model="lesson.ClassSize"
+							placeholder="Name">
+						</input>
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item>
+			<ons-row>
+				<ons-col width="90px">
+					<label style="color: #666">Description</label>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<textarea class="text-input"
+						  ng-model="lesson.Description" 
+						  placeholder="description" required>
+						</textarea>
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+		<ons-list-item ng-repeat="image in entry.Images">
+			<ons-row>
+				<ons-col width="90px">
+					<div class="smallThumb column" back-img="{{image.ImageUrl}}" ></div>
+				</ons-col>
+				<ons-col>
+					<div class="list-input">
+						<input class="text-input"
+							ng-model="image.Caption"
+							placeholder="caption">
+						</input>
+					</div>
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+	</ons-list>
+	
+	<div class="content-padded">
+		<ons-button modifier="large" type="submit" ng-disabled="form.$invalid">
+			Save
+		</ons-button>
+	</div>
+	</form>
+</ons-page>
