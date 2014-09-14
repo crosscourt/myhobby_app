@@ -1,8 +1,10 @@
 <ons-navigator var="myNavigator">
 <ons-page ng-controller="LessonsCtrl">
 	<ons-toolbar>		
-		<div class="center">Classes</div>
-		<div class="right">
+		<div class="center" style="width: 75%">
+			<input type="search" placeholder="Search" class="search-input borderless" ng-model="searchText" ng-model-options="{debounce: 1000}" />
+		</div>
+		<div class="right" style="max-width: 100%">
 			<ons-toolbar-button ng-click="addClass()">
 			  <ons-icon icon="plus">
 			</ons-toolbar-button>

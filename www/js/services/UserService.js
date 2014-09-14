@@ -1,21 +1,22 @@
 angular.module('myApp').service('UserService', function () {
-  // ...
-  var data = [
+	// ...
+	var data = [
 		{Id: 1, Name: "Anthony"},
 		{Id: 2, Name: "Brad"}
 		];
 		
-  return {
+	var service =  {		
+		
+		getUsersByIds: function(userIds){
+			return data;
+		},
+		
+		searchUsers: function(searchText){
+			return [{Name: searchText}];
+		}
 	
-	getUsersByIds: function(userIds){
-
-		return data;
-	},
-	
-	searchUsers: function(searchText){
-		return [{Name: searchText}];
-	}
-	
-  }
+	};
+  
+	return service;
   
 });

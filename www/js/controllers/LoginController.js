@@ -1,7 +1,9 @@
 angular.module('myApp').controller('LoginCtrl', function ($scope, $http, AuthService) {
   
-  var user = $scope.ons.navigator.getCurrentPage().options.user;
-  $scope.user = user;
+  //var user = myNavigator.getCurrentPage().options.user;
+  AuthService.getLogin().then(function(loginDetails) {
+	$scope.user = { Email: loginDetails.Username, Password: "" };
+  }); 
   
   $scope.login = function(){
 	

@@ -6,6 +6,26 @@
 		<div class="center">Business</div>
 	</ons-toolbar>
 	<ons-list>
+		<div>
+			<img src="images/sushi-cupcakes-3.jpg" style="max-width: 100%"></img>			
+		</div>
+		<ons-list-item>
+			<ons-row>
+				<ons-col>
+					<ons-button modifier="quiet" ng-click="toggleFbShare()">
+						<img src="images/comment_24.png"></img> 65
+					</ons-button>
+				</ons-col>
+				<ons-col>
+					<ons-button class="right" modifier="quiet" ng-click="toggleFbShare()">
+						<img src="images/black_thumb_down_24.png"></img> 13
+					</ons-button>
+					<ons-button class="right" modifier="quiet" ng-click="toggleFbShare()">
+						<img src="images/black_thumb_up_24.png"></img> 52
+					</ons-button>					
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
 		<ons-list-item>
 			<ons-row>
 				<ons-col width="90px">
@@ -17,7 +37,7 @@
 					</div>
 				</ons-col>
 			</ons-row>
-		</ons-list-item>		
+		</ons-list-item>
 		<ons-list-item class="list__item list__item--chevron" ng-click="showAdmins()">
 			<ons-col width="90px">
 				<label style="color: #666">Admins</label>
