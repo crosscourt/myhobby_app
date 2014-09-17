@@ -26,12 +26,20 @@
 	
 		<ons-list-item
 			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
-			ng-click="ons.slidingMenu.toggleMenu(); 
-			ons.slidingMenu.setAbovePage('login.html')">
+			ng-click="ons.slidingMenu.toggleMenu(); ons.slidingMenu.setAbovePage('login.html')"
+			ng-show="showLogin">
 			<i class="fa fa-home fa-lg" style="color: #666"></i>
-			&nbsp; {{loginMenu}}
+			&nbsp; Login
 		</ons-list-item>
 
+		<ons-list-item
+			class="topcoat-list__item--tappable topcoat-list__item__line-height" 
+			ng-click="logout(); ons.slidingMenu.toggleMenu(); ons.slidingMenu.setAbovePage('login.html')"
+			ng-show="showLogout">
+			<i class="fa fa-home fa-lg" style="color: #666"></i>
+			&nbsp; Logout
+		</ons-list-item>
+		
 		<ons-list-item 
 			class="topcoat-list__item--tappable topcoat-list__item__line-height"
 			ng-click="ons.slidingMenu.toggleMenu(); 

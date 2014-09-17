@@ -7,27 +7,8 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 	var service =  {
 	
 		init: function() {
-			try {
-				if (!window.openDatabase) {
-					alert('Databases are not supported in this browser.');
-				} else {
-					_db = window.openDatabase('myhobbydb', '1.0', 'hobby database', 2 * 1024 * 1024);
-					
-					// AUTOINCREMENT - lifetime uniqueness				
-					_db.transaction(function (tx) {
-					  tx.executeSql('CREATE TABLE IF NOT EXISTS Login (Id INTEGER PRIMARY KEY AUTOINCREMENT, Username, Token, LastLoginTime INTEGER)');  				  
-					});
-				}
-			}
-			catch (e) {
-				if (e == 2) {
-					// Version number mismatch.
-					console.log("Invalid database version.");
-				} else {
-					console.log("Unknown error "+e+".");
-				}
-				return;
-			}
+			createDB();
+			validateLastLoginOrRedirect();
 		},
 	
 		User: function() { return user; },
@@ -36,17 +17,14 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 		
 		login: function(user){
 			var deferred = $q.defer();
+					
+			//deferred.resolve({ Success: true });		
 			
-			updateLoginDetails({Username: user.Email, Token: "token"});
-			
-			deferred.resolve({ Success: true });		
-			/*
-			$http.post('http://localhost:64180/api/authenticate', {username: user.Email, password: user.Password})
+			$http.post('http://localhost:64180/api/authenticate', {username: user.Username, password: user.Password})
 				.success(function(result){
 					if (result.Success){
-						this.isLoggedIn = true;
-						this.token = result.ApiToken;
-						$http.defaults.headers.common.Authorization = result.ApiToken;
+						updateLoginDetails({User: result.User, Token: result.ApiToken});
+						updateState(result.User, result.ApiToken);									
 					}
 					else {
 						this.isLoggedIn = false;
@@ -58,11 +36,16 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 					deferred.reject(err);
 					console.log(err);
 				});
-				*/
+				
 			return deferred.promise;
 		},
 		
-		logout: function(){
+		logout: function(){			
+			updateLoginDetails({User: user, Token: null});
+			token = null;
+			user = null;
+			isLoggedIn = false;
+			$rootScope.$broadcast('login:updated', false);
 		},
 		
 		getLogin: function() {
@@ -85,6 +68,51 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 		}
 	
 	};
+	
+	function validateLastLoginOrRedirect() {
+		service.getLogin().then(function(loginDetails){
+			if (loginDetails == null || loginDetails.Token == null) {
+				$rootScope.ons.slidingMenu.setAbovePage('login.html');
+			}
+			else { // login still valid
+				var user = {Id: loginDetails.UserId, Username: loginDetails.Username};
+				updateState(user, loginDetails.Token);
+				$rootScope.ons.slidingMenu.setAbovePage('home.html');
+			}			
+		});
+	}
+  
+	function updateState(loginUser, apiToken) {
+		user = loginUser;
+		isLoggedIn = true;
+		token = apiToken;
+		$http.defaults.headers.common.Authorization = apiToken;						
+		$rootScope.$broadcast('login:updated',true);			
+	}
+  
+	function createDB() {
+		try {
+			if (!window.openDatabase) {
+				alert('Databases are not supported in this browser.');
+			} else {
+				_db = window.openDatabase('myhobbydb', '1.0', 'hobby database', 2 * 1024 * 1024);
+				
+				// AUTOINCREMENT - lifetime uniqueness				
+				_db.transaction(function (tx) {
+				  tx.executeSql('CREATE TABLE IF NOT EXISTS Login (Id INTEGER PRIMARY KEY AUTOINCREMENT, UserId INTEFER, Username, Token, LastLoginTime INTEGER)');  				  
+				});
+			}
+		}
+		catch (e) {
+			if (e == 2) {
+				// Version number mismatch.
+				console.log("Invalid database version.");
+			} else {
+				console.log("Unknown error "+e+".");
+			}
+			return;
+		}
+	}
   
 	function getloginDetails(success, fail) {
 
@@ -93,7 +121,7 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 			function (tx, results) {
 				if (results.rows.length > 0) {
 					var item = results.rows.item(0);
-					var login = { Username: item.Username, Token: item.Token, LastLoginTime: Date.fromYYYYMMDDHHMM(item.LastLoginTime) };
+					var login = { Id: item.UserId, Username: item.Username, Token: item.Token, LastLoginTime: Date.fromYYYYMMDDHHMM(item.LastLoginTime) };
 					success(login);
 				}
 				else {
@@ -113,7 +141,7 @@ angular.module('myApp').service('AuthService', function ($rootScope, $http, $q) 
 		
 		// hard code the PK = 1, we only need one row
 		_db.transaction(function (tx) {
-			tx.executeSql('INSERT OR REPLACE INTO Login (Id, Username, Token, LastLoginTime) VALUES (?, ?, ?, ?)', [1, loginDetails.Username, loginDetails.Token, now]);
+			tx.executeSql('INSERT OR REPLACE INTO Login (Id, UserId, Username, Token, LastLoginTime) VALUES (?, ?, ?, ?, ?)', [1, loginDetails.User.Id, loginDetails.User.Username, loginDetails.Token, now]);
 		},
 		function (tx, err) {
 			console.log("updated login failed: " + err);

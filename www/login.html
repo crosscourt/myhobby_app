@@ -43,13 +43,13 @@
 		</div>
 		
 		<div class="center">
-			<ons-button modifier="quiet" ng-click="toggleFbShare()">
+			<ons-button modifier="quiet" ng-click="fbLogin()">
 				<ons-icon icon="facebook-square" style="color: blue"></ons-icon> Facebook
 			</ons-button>
 		</div>
 
 		<div class="center">
-			<facebook-login-button></facebook-login-button>
+			<fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
 		</div>
 	</ons-page>
 </ons-navigator>

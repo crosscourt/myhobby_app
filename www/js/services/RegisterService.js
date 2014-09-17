@@ -5,9 +5,9 @@ angular.module('myApp').service('RegisterService', function ($rootScope, $http, 
 		register: function(user){
 			var deferred = $q.defer();
 		
-			deferred.resolve ({ Success: true });
+			//deferred.resolve ({ Success: true });
 		
-			$http.post('http://localhost:64180/api/register', user)
+			$http.post('http://localhost:64180/api/users', user)
 				.success(function(result){
 					deferred.resolve(result);
 				}).error(function (data, status, headers, config) {
